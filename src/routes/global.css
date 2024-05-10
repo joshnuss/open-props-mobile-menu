@@ -1,2 +1,14 @@
 @import 'open-props/postcss/style';
 @import 'open-props/normalize.min.css';
+
+body {
+  color: var(--gray-8);
+}
+
+a {
+  color: var(--gray-9);
+}
+
+h1 {
+  font-size: 2rem;
+}
