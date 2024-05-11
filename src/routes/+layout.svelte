@@ -30,10 +30,22 @@
 		{/each}
 	</nav>
 
-  <button class="hamburger">
+  <button class="hamburger" popovertarget='menu' popovertargetaction='show'>
     <Icon icon="charm:menu-hamburger" width=28/>
   </button>
 </header>
+
+<div popover id='menu'>
+  <button class="close" popovertarget='menu' popovertargetaction='hide'>
+    <Icon icon="ri:close-fill" width=28/>
+  </button>
+
+  <nav>
+		{#each menus as menu}
+			<a href={menu.url}>{menu.title}</a>
+		{/each}
+	</nav>
+</div>
 
 <main>
   <slot/>
@@ -71,4 +83,56 @@
   main {
     padding: var(--size-4);
   }
+
+
+  [popover] {
+    position: relative;
+    border: solid 1px var(--gray-6);
+    border-radius: var(--radius-2);
+    box-shadow: var(--shadow-3);
+    padding: var(--size-6);
+    inset: 20px 20px auto 20px;
+    width: calc(100vw - 40px);
+    font-size: var(--font-size-3);
+
+    & nav {
+      display: flex;
+      flex-direction: column;
+      gap: var(--size-2);
+
+      & a {
+        border-bottom: solid 1px var(--gray-2);
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+
+  :popover-open {
+    opacity: 0;
+    animation:
+      var(--animation-fade-in) forwards,
+      var(--animation-slide-in-down) forwards;
+    animation-delay: 0.2s;
+    animation-duration: 0.3s;
+    animation-timing-function: var(--ease-in-out-3);
+  }
+
+  button.close {
+    position: absolute;
+    inset: 20px 20px auto auto;
+  }
+
+  ::backdrop {
+    background: #0004;
+    backdrop-filter: blur(2px);
+
+    opacity: 0;
+    animation: var(--animation-fade-in) forwards;
+    animation-duration: 0.3s;
+    animation-timing-function: var(--ease-in-out-3);
+  }
+
 </style>
