@@ -19,7 +19,7 @@ button {
   border-radius: var(--radius-2);
 }
 
-button:has(>svg) {
+button:has(> svg) {
   padding: 0;
 }
 
