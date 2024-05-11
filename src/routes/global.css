@@ -1,5 +1,6 @@
 @import 'open-props/postcss/style';
 @import 'open-props/normalize.min.css';
+@import 'open-props/media.min.css';
 
 body {
   color: var(--gray-8);
@@ -11,4 +12,27 @@ a {
 
 h1 {
   font-size: 2rem;
+}
+
+button {
+  background: none;
+  border-radius: var(--radius-2);
+}
+
+button:has(>svg) {
+  padding: 0;
+}
+
+header > nav {
+  display: none;
+}
+
+@media (--sm-n-above) {
+  header .hamburger {
+    display: none;
+  }
+
+  header > nav {
+    display: flex;
+  }
 }

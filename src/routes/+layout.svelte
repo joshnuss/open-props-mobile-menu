@@ -1,5 +1,6 @@
 <script>
   import './global.css'
+  import Icon from '@iconify/svelte'
 
   const menus = [
 		{ title: 'Pricing', url: '/pricing' },
@@ -28,7 +29,10 @@
 			<a href={menu.url}>{menu.title}</a>
 		{/each}
 	</nav>
-	
+
+  <button class="hamburger">
+    <Icon icon="charm:menu-hamburger" width=28/>
+  </button>
 </header>
 
 <main>
@@ -39,21 +43,29 @@
   header {
     padding: var(--size-2);
     display: flex;
-    align-items: center;
+    align-items: baseline;
     justify-content: space-between;
     gap: var(--size-2);
     padding: var(--size-4);
   }
 
   header nav {
-    display: flex;
     gap: var(--size-2);
     align-items: center;
   }
 
-  header svg {
-    width: 100px;
+  header > svg {
+    width: 110px;
     min-width: 80px;
+  }
+
+  button.hamburger {
+    border: solid 1px var(--gray-2);
+    padding: var(--size-1);
+
+    &:hover {
+      background: var(--gray-2);
+    }
   }
 
   main {
